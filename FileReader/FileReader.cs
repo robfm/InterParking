@@ -9,7 +9,6 @@ namespace FileReader
     {
         private readonly IFileProcessor ifile;
         private string _path;
-
         private Dictionary<string, IFileProcessor> fTypes;
         public FileRead(string path)
         {
@@ -26,7 +25,7 @@ namespace FileReader
 
         public string ReadFile()
         {
-            if (File.Exists(_path))
+            if (File.Exists(_path))            
                return ifile.Read();
             else
                 throw new FileNotFoundException();

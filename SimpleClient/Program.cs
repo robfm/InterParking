@@ -12,8 +12,20 @@ namespace SimpleClient
             {
                 Console.WriteLine("Enter the path of the file: ");
                 string path = Console.ReadLine();
+
                 FileRead fread = new FileRead(path);
                 string result = fread.ReadFile();
+
+                Console.WriteLine("The file is encrypted?: Y/N");
+                var resp = Console.ReadKey();
+                Console.WriteLine(Environment.NewLine);
+
+                if (resp.Key == ConsoleKey.Y)
+                {
+                    FileEncryptor fileEnc = new FileEncryptor();
+                    result = fileEnc.Decrypt(result, string.Empty);
+                }
+
                 Console.WriteLine(result);                
             }
             catch(Exception e)
