@@ -6,6 +6,6 @@ namespace FileReader
 {
     public interface IFileProcessor
     {
-        void Read(string path);
+        string Read();
     }
 }
