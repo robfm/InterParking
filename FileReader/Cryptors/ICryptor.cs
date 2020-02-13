@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FileReader
+namespace FileReader.Cryptors
 {
     interface ICryptor
     {
-        string Decrypt(string text, string key);
+        string Decrypt(string text);
     }
 }

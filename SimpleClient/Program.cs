@@ -1,6 +1,6 @@
 ﻿using System;
-using System.IO;
-using FileReader;
+using FileReader.Readers;
+using FileReader.Cryptors;
 
 namespace SimpleClient
 {
@@ -13,18 +13,14 @@ namespace SimpleClient
                 Console.WriteLine("Enter the path of the file: ");
                 string path = Console.ReadLine();
 
-                FileRead fread = new FileRead(path);
-                string result = fread.ReadFile();
-
-                Console.WriteLine("The file is encrypted?: Y/N");
+                Console.WriteLine("Is the file encrypted?: Y/N");
                 var resp = Console.ReadKey();
                 Console.WriteLine(Environment.NewLine);
 
-                if (resp.Key == ConsoleKey.Y)
-                {
-                    FileEncryptor fileEnc = new FileEncryptor();
-                    result = fileEnc.Decrypt(result, string.Empty);
-                }
+                bool isEncrypted = resp.Key == ConsoleKey.Y;
+
+                FileRead fread = new FileRead(path, isEncrypted);
+                string result = fread.ReadFile();
 
                 Console.WriteLine(result);                
             }
