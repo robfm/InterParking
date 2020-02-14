@@ -16,8 +16,15 @@ namespace FileReader
         }
         public string Read(int roleId)
         {
+            PermissionService permit = new PermissionService();
+
+            if (permit.VerifyAccess((UserRoles.Roles)roleId, UserPermissions.Permissions.CanReadJsonFiles))
+            {
                 string content = "Json File Content";
                 return content;
+            }
+            else
+                throw new Exception(Resource.ExceptionRoleJson);
         }
     }
 }

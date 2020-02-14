@@ -11,7 +11,8 @@ namespace FileReader.Enums
         {
             All = 0,
             CanReadXMLFiles = 1,
-            CanReadTXTFiles = 2
+            CanReadTXTFiles = 2,
+            CanReadJsonFiles = 3
         }
     }
 }

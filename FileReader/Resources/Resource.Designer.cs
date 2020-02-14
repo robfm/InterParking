@@ -70,6 +70,15 @@ namespace FileReader.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This user role doesn&apos;t have permission for reading Json files..
+        /// </summary>
+        internal static string ExceptionRoleJson {
+            get {
+                return ResourceManager.GetString("ExceptionRoleJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The user role entered is not registered..
         /// </summary>
         internal static string ExceptionRoleNotFound {
@@ -79,7 +88,7 @@ namespace FileReader.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This user role doesn&apos;t have permission granted for reading TXT files..
+        ///   Looks up a localized string similar to This user role doesn&apos;t have permission for reading TXT files..
         /// </summary>
         internal static string ExceptionRoleTXT {
             get {
@@ -88,7 +97,7 @@ namespace FileReader.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This user role doesn&apos;t have permission granted for reading XML files..
+        ///   Looks up a localized string similar to This user role doesn&apos;t have permission for reading XML files..
         /// </summary>
         internal static string ExceptionRoleXML {
             get {
