@@ -79,6 +79,15 @@ namespace FileReader.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This user role doesn&apos;t have permission granted for reading TXT files..
+        /// </summary>
+        internal static string ExceptionRoleTXT {
+            get {
+                return ResourceManager.GetString("ExceptionRoleTXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This user role doesn&apos;t have permission granted for reading XML files..
         /// </summary>
         internal static string ExceptionRoleXML {

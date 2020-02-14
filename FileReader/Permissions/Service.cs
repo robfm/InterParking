@@ -18,7 +18,7 @@ namespace FileReader.Permissions
             List<UserPermissions.Permissions> adminPermissions = new List<UserPermissions.Permissions>() { UserPermissions.Permissions.All};
             currentPermissions.Add(UserRoles.Roles.Admin, adminPermissions);
 
-            List<UserPermissions.Permissions> guestPermissions = new List<UserPermissions.Permissions>() { UserPermissions.Permissions.CanReadXMLFiles};
+            List<UserPermissions.Permissions> guestPermissions = new List<UserPermissions.Permissions>() { UserPermissions.Permissions.CanReadXMLFiles, UserPermissions.Permissions.CanReadTXTFiles };
             currentPermissions.Add(UserRoles.Roles.Guest, guestPermissions);
         }
 

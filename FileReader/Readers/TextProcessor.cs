@@ -1,4 +1,7 @@
-﻿using System;
+﻿using FileReader.Enums;
+using FileReader.Permissions;
+using FileReader.Resources;
+using System;
 using System.IO;
 
 namespace FileReader
@@ -13,8 +16,15 @@ namespace FileReader
         }
         public string Read(int roleId)
         {
+            PermissionService permit = new PermissionService();
+
+            if (permit.VerifyAccess((UserRoles.Roles)roleId, UserPermissions.Permissions.CanReadTXTFiles))
+            {
                 string content = "Text File Content";
                 return content;
+            }
+            else
+                throw new Exception(Resource.ExceptionRoleTXT);
         }
     }
 }

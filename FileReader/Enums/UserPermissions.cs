@@ -10,7 +10,8 @@ namespace FileReader.Enums
         public enum Permissions
         {
             All = 0,
-            CanReadXMLFiles = 1
+            CanReadXMLFiles = 1,
+            CanReadTXTFiles = 2
         }
     }
 }

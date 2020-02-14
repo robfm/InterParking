@@ -123,6 +123,9 @@
   <data name="ExceptionRoleNotFound" xml:space="preserve">
     <value>The user role entered is not registered.</value>
   </data>
+  <data name="ExceptionRoleTXT" xml:space="preserve">
+    <value>This user role doesn't have permission granted for reading TXT files.</value>
+  </data>
   <data name="ExceptionRoleXML" xml:space="preserve">
     <value>This user role doesn't have permission granted for reading XML files.</value>
   </data>
