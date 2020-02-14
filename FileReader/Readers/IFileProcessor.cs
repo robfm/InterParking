@@ -6,6 +6,6 @@ namespace FileReader
 {
     public interface IFileProcessor
     {
-        string Read();
+        string Read(int roleId);
     }
 }

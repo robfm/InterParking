@@ -1,4 +1,6 @@
 ﻿using FileReader.Cryptors;
+using FileReader.Permissions;
+using FileReader.Resources;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,44 +10,36 @@ namespace FileReader.Readers
 {
     public class FileRead
     {
-        private readonly IFileProcessor ifile;
-        private readonly ICryptor iCrypt;
+        private IFileProcessor ifile;
+        private ICryptor iCrypt;
 
         private Dictionary<string, IFileProcessor> fileTypes;
         private Dictionary<string, ICryptor> cryptoTypes;
 
         private string _path;
         private bool _isEncrypted;
-        public FileRead(string path, bool isEncrypted)
+        private int _roleId;
+        public FileRead(string path, bool isEncrypted, int roleId)
         {
             this._path = path;
             this._isEncrypted = isEncrypted;
+            this._roleId = roleId;
 
             fileTypes = new Dictionary<string, IFileProcessor>();
             cryptoTypes = new Dictionary<string, ICryptor>();
 
             InitTypes();
-            string extension = Path.GetExtension(_path);
-
-            if (!fileTypes.ContainsKey(extension))
-                throw new Exception("This file is not supported.");
-            else
-                this.ifile = fileTypes[extension];
-
-            if (isEncrypted)
-            {
-                if (!cryptoTypes.ContainsKey(extension))
-                    throw new Exception("This file is not supported.");
-                else
-                    this.iCrypt = cryptoTypes[extension];
-            }
+            InitInterfaces();
         }
 
         public string ReadFile()
         {
             if (File.Exists(_path))
             {
-                string texto = ifile.Read();
+                PermissionService permit = new PermissionService();
+                permit.VerifyRole(_roleId);
+
+                string texto = ifile.Read(_roleId);
 
                 if (_isEncrypted)
                     texto = iCrypt.Decrypt(texto);
@@ -62,6 +56,24 @@ namespace FileReader.Readers
             fileTypes.Add(".xml", new XMLProcessor(_path));
 
             cryptoTypes.Add(".txt", new TextCryptor());
+        }
+
+        private void InitInterfaces()
+        {
+            string extension = Path.GetExtension(_path);
+
+            if (!fileTypes.ContainsKey(extension))
+                throw new Exception(Resource.ExceptionFileNotSupported);
+            else
+                this.ifile = fileTypes[extension];
+
+            if (_isEncrypted)
+            {
+                if (!cryptoTypes.ContainsKey(extension))
+                    throw new Exception(Resource.ExceptionFileNotSupported);
+                else
+                    this.iCrypt = cryptoTypes[extension];
+            }
         }
     }
 }

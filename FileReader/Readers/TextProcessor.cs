@@ -11,7 +11,7 @@ namespace FileReader
         {
             this._path = path;
         }
-        public string Read()
+        public string Read(int roleId)
         {
                 string content = "Text File Content";
                 return content;
