@@ -56,6 +56,7 @@ namespace FileReader.Readers
             fileTypes.Add(".xml", new XMLProcessor(_path));
 
             cryptoTypes.Add(".txt", new TextCryptor());
+            cryptoTypes.Add(".xml", new TextCryptor());
         }
 
         private void InitInterfaces()
