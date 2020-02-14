@@ -57,7 +57,8 @@ namespace FileReader.Readers
             fileTypes.Add(".json", new JsonProcessor(_path));
 
             cryptoTypes.Add(".txt", new TextCryptor());
-            cryptoTypes.Add(".xml", new TextCryptor());
+            cryptoTypes.Add(".xml", new XMLCryptor());
+            cryptoTypes.Add(".json", new JsonCryptor());
         }
 
         private void InitInterfaces()
