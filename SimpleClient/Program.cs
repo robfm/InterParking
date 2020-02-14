@@ -14,6 +14,7 @@ namespace SimpleClient
             {
                 Console.WriteLine("Enter the path of the file: ");
                 string path = Console.ReadLine();
+                Console.WriteLine(Environment.NewLine);
 
                 Console.WriteLine("Is the file encrypted?: Y/N");
                 var resp = Console.ReadKey();
